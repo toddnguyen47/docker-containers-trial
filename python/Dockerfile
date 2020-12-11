@@ -11,8 +11,14 @@ ENV PYTHONUNBUFFERED=1
 ADD requirements.txt .
 RUN python -m pip install -r requirements.txt
 
+# Install pip requirements using pipenv
+# ADD Pipfile .
+# RUN python -m pip install pipenv
+# RUN python -m pipenv install --deploy --ignore-pipfile
+
 WORKDIR /app
-ADD . /app
+# ADD . /app
+COPY . /app
 
 # Switching to a non-root user, please refer to https://aka.ms/vscode-docker-python-user-rights
 RUN useradd appuser && chown -R appuser /app
