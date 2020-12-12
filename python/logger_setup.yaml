@@ -1,0 +1,31 @@
+---
+version: 1
+disable_existing_loggers: true
+formatters:
+  standard:
+    format: "[%(asctime)s] [%(levelname)-8s] %(message)s [%(filename)s] [%(threadName)s]"
+    datefmt: "%Y-%m-%d %H:%M:%S"
+handlers:
+  console:
+    class: logging.StreamHandler
+    formatter: standard
+    level: DEBUG
+  file_all_levels:
+    class: logging.FileHandler
+    encoding: utf-8
+    filename: logs/all_levels.log
+    formatter: standard
+    level: DEBUG
+  file_errors:
+    class: logging.FileHandler
+    encoding: utf-8
+    filename: logs/errors.log
+    formatter: standard
+    level: ERROR
+root:
+  handlers:
+    - console
+    - file_all_levels
+    - file_errors
+  level: DEBUG
+  propagate: false
